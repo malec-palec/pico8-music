@@ -3,6 +3,20 @@
   "version": "0.0.1",
   "license": "MIT",
   "main": "src/player.js",
+  "types": "index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "default": "./dist/player.min.js"
+    }
+  },
+  "files": [
+    "src/",
+    "dist/",
+    "index.d.ts",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
     "dev": "node build.js --watch",
     "build": "node build.js",
