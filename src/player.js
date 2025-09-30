@@ -31,7 +31,7 @@ const BASE_SPEED = 120;
  * Falls back to webkitAudioContext for older iOS Safari versions.
  * @const {!AudioContext}
  */
-const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+const audioCtx = new (AudioContext || webkitAudioContext)();
 
 /**
  * Creates a new PICO-8 cartridge.
