@@ -27,9 +27,11 @@ const BASE_SPEED = 120;
 /**
  * Global audio context.
  * Using a global will create a warning in Chrome, but appears to be fine.
+ * Supports both standard AudioContext and webkit-prefixed version for Safari compatibility.
+ * Falls back to webkitAudioContext for older iOS Safari versions.
  * @const {!AudioContext}
  */
-const audioCtx = new AudioContext();
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
 /**
  * Creates a new PICO-8 cartridge.
@@ -479,4 +481,6 @@ window['Pico8'] = function(sfx, music) {
 
   this['sfx'] = playSfx;
   this['music'] = playMusic;
+  // Expose AudioContext for advanced audio operations and Web Audio API integration
+  this['ctx'] = audioCtx;
 };
